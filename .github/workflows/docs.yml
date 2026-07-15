@@ -38,8 +38,19 @@ jobs:
       - name: Install mermaid-filter
         run: npm install -g mermaid-filter
 
+      # GitHub Actions' runners can't launch Chromium's SUID sandbox in a
+      # container, so it fails with "No usable sandbox!" unless told to skip
+      # it. mermaid-filter forwards this file straight to Chromium via
+      # MERMAID_FILTER_PUPPETEER_CONFIG. See raghur/mermaid-filter#21 and
+      # mermaid-js/mermaid-cli's docs/linux-sandbox-issue.md.
+      - name: Configure Puppeteer for CI (disable sandbox)
+        run: |
+          echo '{"args": ["--no-sandbox", "--disable-setuid-sandbox"]}' > puppeteer-config.json
+
       - name: Build ${{ matrix.doc }} PDF
         working-directory: example_docs/${{ matrix.doc }}
+        env:
+          MERMAID_FILTER_PUPPETEER_CONFIG: ${{ github.workspace }}/puppeteer-config.json
         run: |
           pandoc main.md \
             --lua-filter=../shared/include-files.lua \
