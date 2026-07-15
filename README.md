@@ -18,7 +18,15 @@ to copy and adapt per project — placeholders are marked `<like this>`.
       SAD_4plus1/               Software Architecture Document — Kruchten's 4+1 view model (shorter)
       SDD_ieee42010/            Software Design Description — IEEE 1016 + ISO 42010, viewpoint-based
       SDD_index/                Software Design Description — thin index/hub, just links to unit docs
-      include-files.lua        Shared Pandoc filter used by all four documents above
+      shared/                  Shared Pandoc filter and CSS used by all four documents above
+
+    example_root/              What normally sits at a real project's repo root
+      README.md                Project front door: what it does, build/flash/run
+      tools.md                 Detailed setup, dependencies, debugging
+
+    decisions/                 Project-wide decision log (minimal MADR template + example)
+
+    LICENSE                    MIT, covers this repo and notes third-party template licenses
 
 ## Two conventions demonstrated
 
@@ -29,18 +37,11 @@ Mermaid code blocks (git-diffable, renders in VS Code with a Mermaid preview
 extension).
 
 **System-level docs are split into chapters and built with Pandoc.** Each
-folder under `example_docs/` has a `README.md` (front matter + a
-`{.include}` block listing that document's chapter files in order) plus one
-file per chapter/view. Viewed directly, the include block just shows a file
-list; running it through Pandoc merges everything into one document:
-
-```bash
-cd example_docs/SAD_arc42
-pandoc README.md --lua-filter=../include-files.lua --filter=mermaid-filter -o SAD_arc42.pdf
-```
-
-(`mermaid-filter` renders the Mermaid diagrams; drop it for documents that
-don't have any, like `SDD_index`.)
+folder under `example_docs/` has a `main.md` (front matter + a `{.include}`
+block listing that document's chapter files in order) plus one file per
+chapter/view — `main.md` is the actual document, fed to Pandoc to produce the
+PDF. The folder's `README.md` is separate: build instructions and setup only,
+not part of the document itself.
 
 ## Which SAD/SDD to use
 

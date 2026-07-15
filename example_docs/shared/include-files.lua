@@ -33,14 +33,16 @@
 --- Modifications (simplification to drop the pandoc>=2.12 path/system
 --- dependency) are part of this repository and covered by its own LICENSE.
 ---
---- Usage in a README.md file (paths are relative to where pandoc is invoked):
+--- Usage in a main.md file (paths are relative to where pandoc is invoked).
+--- Keep this out of README.md — README.md is build/usage instructions only,
+--- not part of the document itself:
 ---
 ---   ```{.include}
 ---   01_first_section.md
 ---   02_second_section.md
 ---   ```
 ---
---- Build with:  pandoc README.md --lua-filter=../include-files.lua -o out.pdf
+--- Build with:  pandoc main.md --lua-filter=../include-files.lua -o out.pdf
 --- (add --filter=mermaid-filter as well to render the Mermaid diagrams)
 
 local List = require 'pandoc.List'

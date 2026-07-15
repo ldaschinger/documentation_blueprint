@@ -22,7 +22,7 @@ maintainers, reviewers checking traceability to requirements.>
 
 | Reference | Type | Location |
 | --------- | ---- | -------- |
-| Software Architecture Document | Normative | `../SAD_arc42/README.md` or `../SAD_4plus1/README.md` |
+| Software Architecture Document | Normative | `../SAD_arc42/main.md` or `../SAD_4plus1/main.md` |
 | Requirements | Normative | <link to SRS> |
 | Unit-level design docs | Normative | `../../example_sources/<layer>/<unit>/doc/` |
 

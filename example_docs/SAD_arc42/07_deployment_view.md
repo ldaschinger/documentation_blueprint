@@ -2,7 +2,7 @@
 
 ### 7.1 Infrastructure Level 1
 
-```mermaid
+```{.mermaid width=1400 scale=2}
 C4Deployment
   title Deployment — Internet Banking System, Live (example)
   Deployment_Node(cust, "Customer's Computer", "Windows / macOS"){

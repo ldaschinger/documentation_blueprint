@@ -26,14 +26,12 @@ struct, static variables, buffers.
 
 ### Register map (packet composition)
 
-Example only — shows how to embed a Mermaid `packet-beta` bit-field diagram.
+Example only — shows how to lay out a register bit-field as a table.
 
-```mermaid
-packet-beta
-title Example Register
-0-7: "Address"
-8-15: "Data"
-```
+| Bits | Field |
+| ---- | ----- |
+| 0-7 | Address |
+| 8-15 | Data |
 
 ## Design Decisions
 

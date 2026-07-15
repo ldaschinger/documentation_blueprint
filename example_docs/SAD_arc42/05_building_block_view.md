@@ -2,7 +2,7 @@
 
 ### 5.1 Whitebox Overall System
 
-```mermaid
+```{.mermaid width=1400 scale=2}
 C4Container
   title Container diagram — Internet Banking System (example)
   Person(customer, "Personal Banking Customer")
@@ -39,7 +39,7 @@ C4Container
 
 ### 5.2 Level 2 — \<API Application\>
 
-```mermaid
+```{.mermaid width=1400 scale=2}
 C4Component
   title Component diagram — API Application (example)
   Container_Boundary(api, "API Application") {

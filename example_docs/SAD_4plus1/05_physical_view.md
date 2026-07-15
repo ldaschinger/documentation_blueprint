@@ -2,7 +2,7 @@
 
 Mapping of software to hardware.
 
-```mermaid
+```{.mermaid width=900 scale=2}
 C4Deployment
   title Deployment — I2C Sensor Reader (example)
   Deployment_Node(mcu, "Target MCU", "e.g. STM32/PIC"){

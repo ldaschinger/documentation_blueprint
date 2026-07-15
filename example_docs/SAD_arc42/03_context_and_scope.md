@@ -2,7 +2,7 @@
 
 ### 3.1 Business Context
 
-```mermaid
+```{.mermaid width=1000 scale=2}
 C4Context
   title System Context — Internet Banking System (example)
   Person(customer, "Personal Banking Customer", "A customer of the bank")

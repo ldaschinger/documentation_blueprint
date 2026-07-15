@@ -8,4 +8,4 @@ that unit's own "Design Decisions" section instead.
 - Context: A single central SDD tends to drift out of sync with the code it describes.
 - Options: (a) monolithic SDD, (b) docs colocated per unit + thin global index, (c) docs colocated per unit + full IEEE 42010 global SDD
 - Outcome: (c) — chosen because <traceability/audit requirement, if applicable>
-- More Information: see also `../SDD_index/README.md` for the simpler alternative considered
+- More Information: see also `../SDD_index/main.md` for the simpler alternative considered
