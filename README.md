@@ -16,7 +16,7 @@ to copy and adapt per project — placeholders are marked `<like this>`.
     example_docs/             System-level architecture/design documents
       SAD_arc42/               Software Architecture Document — arc42 template + C4 (Mermaid) diagrams
       SAD_4plus1/               Software Architecture Document — Kruchten's 4+1 view model (shorter)
-      SDD_ieee42010/            Software Design Description — IEEE 1016 + ISO 42010, viewpoint-based
+      SDD_ieee1016/             Software Design Description — IEEE 1016 + ISO 42010, viewpoint-based
       SDD_index/                Software Design Description — thin index/hub, just links to unit docs
       shared/                  Shared Pandoc filter and CSS used by all four documents above
 
@@ -48,7 +48,7 @@ not part of the document itself.
 Two options each are included to compare, not to use both on a real project:
 
 - **SAD:** `SAD_arc42` (comprehensive) vs. `SAD_4plus1` (shorter, fewer views)
-- **SDD:** `SDD_ieee42010` (standards-traceable, viewpoint-based) vs.
+- **SDD:** `SDD_ieee1016` (standards-traceable, viewpoint-based) vs.
   `SDD_index` (minimal navigation hub, viega-style)
 
 Pick one of each, delete the other, and replace the example content with your

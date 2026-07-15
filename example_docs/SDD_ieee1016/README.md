@@ -30,5 +30,5 @@ not part of the document; it's only the build instructions.
   - `npm install -g mermaid-filter`
 
 ```bash
-pandoc main.md --lua-filter=../shared/include-files.lua --filter=mermaid-filter --pdf-engine=weasyprint --css=../shared/style.css -o SDD_ieee42010.pdf
+pandoc main.md --lua-filter=../shared/include-files.lua --filter=mermaid-filter --pdf-engine=weasyprint --css=../shared/style.css -o SDD_ieee1016.pdf
 ```

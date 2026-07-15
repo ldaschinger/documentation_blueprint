@@ -36,6 +36,6 @@ Target hardware: <board/revision>. Debug probe: <e.g. ICD5, ST-Link>.
 ## More Documentation
 
 - Architecture: `../example_docs/SAD_arc42/` or `../example_docs/SAD_4plus1/`
-- Design: `../example_docs/SDD_ieee42010/` or `../example_docs/SDD_index/`
+- Design: `../example_docs/SDD_ieee1016/` or `../example_docs/SDD_index/`
 - Decisions: `../decisions/`
 - Detailed developer setup, dependencies, debugging: `tools.md`
