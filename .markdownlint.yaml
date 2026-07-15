@@ -1,0 +1,17 @@
+# markdownlint config tuned to this repo's conventions (not generic
+# "fix everything" defaults). Rules disabled below are false positives
+# given how this blueprint is deliberately structured, not sloppiness:
+MD013: false # line-length: prose isn't hard-wrapped; tables/code run long
+MD025: false # single-h1: main.md files have a YAML `title:` *and* a
+             # matching `#` heading (needed for PDF metadata + display)
+MD033: false # no-inline-html: `<placeholder>` bracket syntax is used
+             # throughout as "fill this in per project"
+MD036: false # no-emphasis-as-heading: arc42 template uses bold run-in
+             # sub-labels (e.g. "**Contained building blocks**") by design
+MD041: false # first-line-h1: chapter files intentionally start at `##`;
+             # `main.md` holds the document's only `#` title
+MD046: false # code-block-style: the top-level README's directory tree
+             # uses an indented block on purpose
+MD051: false # link-fragments: main.md's TOC anchors target Pandoc's
+             # generated IDs for the built PDF, not GitHub's renderer
+MD060: false # table-column-style: not enforcing one pipe-alignment style

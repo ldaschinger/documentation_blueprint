@@ -1,0 +1,83 @@
+name: Docs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-pdfs:
+    name: Build ${{ matrix.doc }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        doc: [SAD_arc42, SAD_4plus1, SDD_ieee42010, SDD_index]
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Install Pandoc and weasyprint
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc weasyprint
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # mermaid-filter renders diagrams via Puppeteer/headless Chromium; the
+      # download is the slow part of installing it, so cache it across runs.
+      - name: Cache Puppeteer's Chromium download
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/puppeteer
+          key: puppeteer-${{ runner.os }}-mermaid-filter
+
+      - name: Install mermaid-filter
+        run: npm install -g mermaid-filter
+
+      - name: Build ${{ matrix.doc }} PDF
+        working-directory: example_docs/${{ matrix.doc }}
+        run: |
+          pandoc main.md \
+            --lua-filter=../shared/include-files.lua \
+            --filter=mermaid-filter \
+            --pdf-engine=weasyprint \
+            --css=../shared/style.css \
+            -o ${{ matrix.doc }}.pdf
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.doc }}
+          path: example_docs/${{ matrix.doc }}/${{ matrix.doc }}.pdf
+          retention-days: 30
+
+  lint-markdown:
+    name: Lint Markdown
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: markdownlint-cli2
+        uses: DavidAnson/markdownlint-cli2-action@v24
+        with:
+          globs: "**/*.md"
+
+  check-links:
+    name: Check Links
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      # External link rot shouldn't block a merge on its own — surface
+      # broken links in the log without failing the job.
+      - name: Lychee link check
+        uses: lycheeverse/lychee-action@v2
+        continue-on-error: true
+        with:
+          args: --no-progress --verbose "**/*.md"
